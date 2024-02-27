@@ -1,0 +1,67 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Asortyment_System.Windows"
+        xmlns:Controllers="clr-namespace:Asortyment_System.Controllers" x:Class="Asortyment_System.Windows.Assortyment"
+        mc:Ignorable="d"
+        Title="Asortyment" Height="700" Width="1080" MinHeight="700" MinWidth="1080">
+    <Grid x:Name="grid">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <StackPanel>
+            <GroupBox Header="Wyszukaj Produkt">
+                <TextBox Name="Search" Height="30" FontSize="20"/>
+            </GroupBox>
+        </StackPanel>
+        <DataGrid x:Name="assortyment_items" ColumnWidth="*" Cursor="Hand" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False" IsReadOnly="True" HorizontalScrollBarVisibility="Auto" Margin="0,55,0,0">
+            <DataGrid.DataContext>
+                <Controllers:AsortymentDBContext/>
+            </DataGrid.DataContext>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="EAN" Binding="{Binding EAN}" SortDirection="Ascending"/>
+                <DataGridTextColumn Header="Nazwa Produktu" Binding="{Binding nazwaProduktu}"/>
+                <DataGridTextColumn Header="Opis Produktu" Binding="{Binding opis}"/>
+                <DataGridTextColumn Header="Cena" Binding="{Binding cena}"/>
+                <DataGridTextColumn Header="Stan Magazynowy" Binding="{Binding stanMagazynowy}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <DockPanel x:Name="dockPanel" Background="#FFE5E5E5" LastChildFill="False" UseLayoutRounding="True" Grid.Column="1" MinWidth="360">
+            <StackPanel Orientation="Vertical" DockPanel.Dock="Top" VerticalAlignment="Center" Margin="10" >
+                <GroupBox Header="EAN">
+                    <TextBox x:Name="EAN" Padding="10,5,10,5"/>
+                </GroupBox>
+                <GroupBox Header="Nazwa">
+                    <TextBox x:Name="Name" Padding="10,5,10,5"/>
+                </GroupBox>
+                <GroupBox Header="Opis">
+                    <TextBox x:Name="Description" Padding="10,5,10,5" TextWrapping="Wrap" Height="84"/>
+                </GroupBox>
+                <StackPanel x:Name="stackPanel" Orientation="Horizontal" DockPanel.Dock="Top" VerticalAlignment="Center" Margin="10" >
+                    <GroupBox x:Name="groupBox" Header="Cena" Width="163">
+                        <TextBox x:Name="Price" Padding="5,5,5,5"/>
+                    </GroupBox>
+                    <GroupBox Header="Stan Magazynowy" Width="185">
+                        <TextBox x:Name="Quantity" Padding="5,5,5,5"/>
+                    </GroupBox>
+                </StackPanel>
+                <GroupBox x:Name="groupBox1" Header="Stan Magazynowy" Width="340" MinHeight="220" VerticalAlignment="{Binding ElementName=stackPanel, Mode=OneWay}" MaxHeight="220" HorizontalAlignment="Right">
+                    <DataGrid x:Name="ConnectedEAN_items" ColumnWidth="*" Cursor="Hand" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False">
+                        <DataGrid.DataContext>
+                            <Controllers:ConnectedEAN/>
+                        </DataGrid.DataContext>
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="EAN" Binding="{Binding LinkedEAN}" SortDirection="Ascending" Foreground="Black" IsReadOnly="True" />
+                            <DataGridTextColumn Header="Cena" Binding="{Binding price}"/>
+                            <DataGridTextColumn Header="Stan" Binding="{Binding quantity}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </GroupBox>
+                <Button x:Name="update_product" Content="AKTUALIZUJ PRODUKT" Padding="20,20,20,20" Background="#FF39EE20" UseLayoutRounding="False" FontSize="18" FontWeight="Bold" VerticalAlignment="{Binding ElementName=groupBox1, Mode=OneWay}"/>
+            </StackPanel>
+        </DockPanel>
+    </Grid>
+</Window>

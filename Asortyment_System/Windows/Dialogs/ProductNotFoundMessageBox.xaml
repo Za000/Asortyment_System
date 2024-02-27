@@ -1,0 +1,20 @@
+﻿<Window x:Class="Asortyment_System.Windows.ProductNotFoundMessageBox"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Asortyment_System.Windows"
+        mc:Ignorable="d"
+        Title="Znaleziono produkt" MinWidth="300" MinHeight="150" ResizeMode="NoResize" MaxHeight="150" MaxWidth="343.073333333333">
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock x:Name="MessageBoxText" TextWrapping="Wrap" Text="Wybierz akcje" VerticalAlignment="Center" HorizontalAlignment="Center" RenderTransformOrigin="0.5,0.5"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Bottom" HorizontalAlignment="Center">
+            <Button x:Name="add_product" Content="Dodaj produkt" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,10,10,10" Background="#FFFFF903" Padding="3,6,3,6" FontWeight="Bold" FontStretch="Normal"/>
+            <Button x:Name="add_connected" Content="Dodaj kod dowiązany" HorizontalAlignment="Left"  VerticalAlignment="Center" Margin="10,10,10,10" Background="#FF03FF52" Padding="3,6,3,6" FontWeight="Bold" FontStretch="Normal" />
+        </StackPanel>
+        <Label Content="Nie znaleziono wyników dla tego produktu" Margin="10,10,10,0" VerticalAlignment="Top" FontWeight="Bold" BorderThickness="0,0,0,1" BorderBrush="#FFD1D1D1"/>
+
+    </Grid>
+</Window>

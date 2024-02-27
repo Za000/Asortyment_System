@@ -1,0 +1,30 @@
+﻿<Window x:Class="Asortyment_System.Windows.AddConnectedMessageBox"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Asortyment_System.Windows"
+        mc:Ignorable="d"
+        Title="Znaleziono produkt" MinWidth="300" MinHeight="199" ResizeMode="NoResize" MaxHeight="200" MaxWidth="343.073333333333">
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,55">
+            <TextBlock x:Name="MessageBoxText" TextWrapping="Wrap" Text="Wprowadź kod produktu" RenderTransformOrigin="0.5,0.5"/>
+        </StackPanel>
+        <StackPanel Orientation="Vertical" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Bottom" HorizontalAlignment="Center">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Center">
+                <GroupBox Header="Kod Produktu">
+                    <TextBox x:Name="EAN" TextWrapping="Wrap" Width="50" BorderBrush="#FF00FF0F" Height="30"/>
+                </GroupBox>
+                <GroupBox Header="Cena">
+                    <TextBox x:Name="Price" TextWrapping="Wrap" Width="50" BorderBrush="#FF00FF0F" Height="30"/>
+                </GroupBox>
+                <GroupBox Header="Stan magazynowy">
+                    <TextBox x:Name="Quantity" TextWrapping="Wrap" Width="50" BorderBrush="#FF00FF0F" Height="30"/>
+                </GroupBox>
+            </StackPanel>
+            <Button x:Name="Sell" Content="Dodaj kod dowiązany" HorizontalAlignment="Center"  VerticalAlignment="Center" Margin="10,10,10,10" Background="#FF03FF52" Padding="3,6,3,6" FontWeight="Bold" FontStretch="Normal" Click="Sell_Click" />
+        </StackPanel>
+        <Label Content="Znaleziono wynik dla tego produktu" Margin="10,10,10,0" VerticalAlignment="Top" FontWeight="Bold" BorderThickness="0,0,0,1" BorderBrush="#FFD1D1D1"/>
+
+    </Grid>
+</Window>
